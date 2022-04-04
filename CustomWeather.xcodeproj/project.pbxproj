@@ -11,6 +11,10 @@
 		C759186527FAEA09004DB176 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C759186427FAEA09004DB176 /* SceneDelegate.swift */; };
 		C759186C27FAEA0A004DB176 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C759186B27FAEA0A004DB176 /* Assets.xcassets */; };
 		C759186F27FAEA0A004DB176 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C759186D27FAEA0A004DB176 /* LaunchScreen.storyboard */; };
+		C759187727FB10BB004DB176 /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C759187627FB10BB004DB176 /* CityListViewController.swift */; };
+		C759187927FB1A6C004DB176 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C759187827FB1A6C004DB176 /* CityModel.swift */; };
+		C759187B27FB1D02004DB176 /* CustomCityListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C759187A27FB1D02004DB176 /* CustomCityListCell.swift */; };
+		C759187D27FB1E78004DB176 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C759187C27FB1E78004DB176 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		C759186B27FAEA0A004DB176 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C759186E27FAEA0A004DB176 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C759187027FAEA0A004DB176 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C759187627FB10BB004DB176 /* CityListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListViewController.swift; sourceTree = "<group>"; };
+		C759187827FB1A6C004DB176 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		C759187A27FB1D02004DB176 /* CustomCityListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCityListCell.swift; sourceTree = "<group>"; };
+		C759187C27FB1E78004DB176 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,11 +62,47 @@
 			children = (
 				C759186227FAEA09004DB176 /* AppDelegate.swift */,
 				C759186427FAEA09004DB176 /* SceneDelegate.swift */,
+				C759187F27FB3A25004DB176 /* Models */,
+				C759188027FB3A47004DB176 /* Views */,
+				C759187E27FB39F6004DB176 /* Controllers */,
+				C759188127FB3A6D004DB176 /* Extensions */,
 				C759186B27FAEA0A004DB176 /* Assets.xcassets */,
 				C759186D27FAEA0A004DB176 /* LaunchScreen.storyboard */,
 				C759187027FAEA0A004DB176 /* Info.plist */,
 			);
 			path = CustomWeather;
+			sourceTree = "<group>";
+		};
+		C759187E27FB39F6004DB176 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C759187627FB10BB004DB176 /* CityListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C759187F27FB3A25004DB176 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C759187827FB1A6C004DB176 /* CityModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C759188027FB3A47004DB176 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C759187A27FB1D02004DB176 /* CustomCityListCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C759188127FB3A6D004DB176 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C759187C27FB1E78004DB176 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +175,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C759187D27FB1E78004DB176 /* UIView+Extension.swift in Sources */,
+				C759187927FB1A6C004DB176 /* CityModel.swift in Sources */,
 				C759186327FAEA09004DB176 /* AppDelegate.swift in Sources */,
+				C759187B27FB1D02004DB176 /* CustomCityListCell.swift in Sources */,
+				C759187727FB10BB004DB176 /* CityListViewController.swift in Sources */,
 				C759186527FAEA09004DB176 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,7 +323,6 @@
 				INFOPLIST_FILE = CustomWeather/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -302,7 +349,6 @@
 				INFOPLIST_FILE = CustomWeather/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
