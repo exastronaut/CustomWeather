@@ -1,5 +1,5 @@
 //
-//  CityListCell.swift
+//  CityViewCell.swift
 //  CustomWeather
 //
 //  Created by Артем Свиридов on 05.04.2022.
@@ -7,15 +7,9 @@
 
 import UIKit
 
-class CityListCell: UITableViewCell {
+class CityViewCell: UITableViewCell {
 
     // MARK: - Properties
-    
-    private let customContentView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
 
     private let stackView: UIStackView = {
         let stack = UIStackView()
@@ -41,6 +35,7 @@ class CityListCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
+        contentView.backgroundColor = .systemGray2
     }
 
     required init?(coder: NSCoder) {
@@ -49,26 +44,23 @@ class CityListCell: UITableViewCell {
 
     // MARK: - Methods
 
-    func setupCell(model: CityModel) {
+    func setupCell(model: WeatherModel) {
         nameCity.text = model.name
-        temperatureCity.text = model.temperature
+        temperatureCity.text = "\(model.temp)°"
     }
 
     private func layout() {
-        [customContentView, stackView].forEach { contentView.addSubview($0) }
+        contentView.addSubview(stackView)
 
         [nameCity, temperatureCity].forEach { stackView.addArrangedSubview($0) }
 
-        NSLayoutConstraint.activate([
-            customContentView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            customContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            customContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            customContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+        let indent: CGFloat = 8
 
-            stackView.topAnchor.constraint(equalTo: customContentView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: customContentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: customContentView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: customContentView.bottomAnchor)
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: indent),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: indent),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -indent),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -indent)
 
         ])
     }
