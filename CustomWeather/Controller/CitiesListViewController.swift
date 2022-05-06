@@ -16,7 +16,6 @@ class CitiesListViewController: UIViewController {
 
     private lazy var citiesTableView: UITableView = {
         let table = UITableView()
-        table.backgroundColor = .systemGray2
         table.translatesAutoresizingMaskIntoConstraints = false
         table.delegate = self
         table.dataSource = self
@@ -40,14 +39,28 @@ class CitiesListViewController: UIViewController {
         startLocationManager()
     }
 
+
     // MARK: - Methods
     private func customizeView() {
-        view.backgroundColor = .systemGray2
-        title = "Cities List"
+        view.backgroundColor = .systemBackground
     }
 
-    @objc private func addCity() { }
-
+    @objc private func addCity() {
+        let searchViewController = SearchViewController()
+        let navigationController = UINavigationController(rootViewController: searchViewController)
+        present(navigationController, animated: true) {
+            searchViewController.completion = {  [weak self] lat, lon in
+                guard let self = self else { return }
+                self.networkWeatherManager.fetchWeather(lat: lat, lon: lon) { [weak self] weatherModel in
+                    guard let self = self else { return }
+                    self.citiesWeather += weatherModel
+                    DispatchQueue.main.async {
+                        self.citiesTableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
 
     private func layout() {
         [citiesTableView, addCityButton].forEach{ view.addSubview($0) }
@@ -106,9 +119,10 @@ extension CitiesListViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
             networkWeatherManager.fetchWeather(lat: lastLocation.coordinate.latitude, lon: lastLocation.coordinate.longitude) { [weak self] weatherModel in
-                self?.citiesWeather[0] = weatherModel.first ?? WeatherModel()
+                guard let self = self else { return }
+                self.citiesWeather[0] = weatherModel.first ?? WeatherModel()
                 DispatchQueue.main.async {
-                    self?.citiesTableView.reloadData()
+                    self.citiesTableView.reloadData()
                 }
             }
         }

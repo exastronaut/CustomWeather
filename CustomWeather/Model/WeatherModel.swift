@@ -8,7 +8,7 @@
 import Foundation
 
 struct WeatherModel {
-    var name: String = "Название"
+    var name: String = ""
     var temp: Double = 0
     var icon: String = ""
     var description: String = ""
@@ -17,10 +17,6 @@ struct WeatherModel {
         var result = [WeatherModel]()
         result.append(WeatherModel(name: data.city.name, temp: data.list.first!.main.temp))
         return result
-    }
-
-    func makeModel(_ data: WeatherData) -> WeatherModel {
-        WeatherModel(name: data.city.name, temp: data.list.first!.main.temp)
     }
 }
 
