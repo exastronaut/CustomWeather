@@ -10,7 +10,8 @@ import UIKit
 class SearchViewController: UIViewController {
     // MARK: - Properties
     private var networkLocationManager = NetworkLocationManager()
-    private var foundLocations = [LocationModel]()
+    private var foundLocations = [LocationData]()
+    private var timer = Timer()
 
     var completion: ((Double, Double) -> Void)?
 
@@ -112,7 +113,7 @@ extension SearchViewController: UITableViewDelegate {
 // MARK: - UISearchResultsUpdating
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else {
+        guard let text = searchController.searchBar.text, text != "" else {
             return
         }
         networkLocationManager.fetchLocation(text: text) { [weak self] locations in

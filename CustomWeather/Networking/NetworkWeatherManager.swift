@@ -11,7 +11,7 @@ struct NetworkWeatherManager {
     func fetchWeather(
         lat: Double,
         lon: Double,
-        completionHandler: @escaping ([WeatherModel]) -> Void
+        completionHandler: @escaping (WeatherData) -> Void
     ) {
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat.description)&lon=\(lon.description)&appid=\(appID)&units=metric&lang=ru") else {
             print("invalid login URL")
@@ -23,8 +23,7 @@ struct NetworkWeatherManager {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             do {
                 let weatherData = try decoder.decode(WeatherData.self, from: data)
-                let weather = WeatherModel().makeListModel(weatherData)
-                completionHandler(weather)
+                completionHandler(weatherData)
             } catch {
                 print(error)
             }

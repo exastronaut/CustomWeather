@@ -8,22 +8,12 @@
 import UIKit
 
 class CityViewCell: UITableViewCell {
-
     // MARK: - Properties
-    private let nameCity: UILabel = {
-        let lable = UILabel()
-        lable.translatesAutoresizingMaskIntoConstraints = false
-        return lable
-    }()
-
-    private let temperatureCity: UILabel = {
-        let lable = UILabel()
-        lable.translatesAutoresizingMaskIntoConstraints = false
-        return lable
-    }()
+    private lazy var nameCity = makeLable(sizeFont: 24)
+    private lazy var temperatureCity = makeLable(sizeFont: 24)
+    private lazy var currentLocation = makeLable(sizeFont: 14)
 
     // MARK: - Lifecycle
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
@@ -34,14 +24,17 @@ class CityViewCell: UITableViewCell {
     }
 
     // MARK: - Methods
-
-    func setupCell(model: WeatherModel) {
-        nameCity.text = model.name
-        temperatureCity.text = "\(model.temp)°"
+    func setupCell(_ model: WeatherData, _ index: Int) {
+        if index == 0 {
+            currentLocation.text = "Текущее местоположение"
+            currentLocation.textColor = .systemGray
+        }
+        nameCity.text = model.city.name
+        temperatureCity.text = "\(model.list.first?.main.temp ?? 0.0)°"
     }
 
     private func layout() {
-        [nameCity, temperatureCity].forEach { contentView.addSubview($0) }
+        [nameCity, temperatureCity, currentLocation].forEach { contentView.addSubview($0) }
 
         let indent: CGFloat = 8
 
@@ -50,8 +43,12 @@ class CityViewCell: UITableViewCell {
             nameCity.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: indent),
             nameCity.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -indent),
 
+            currentLocation.topAnchor.constraint(equalTo: nameCity.topAnchor),
+            currentLocation.leadingAnchor.constraint(equalTo: nameCity.trailingAnchor, constant: indent),
+            currentLocation.bottomAnchor.constraint(equalTo: nameCity.bottomAnchor),
+
             temperatureCity.topAnchor.constraint(equalTo: nameCity.topAnchor),
-            temperatureCity.leadingAnchor.constraint(greaterThanOrEqualTo: nameCity.trailingAnchor, constant: indent),
+            temperatureCity.leadingAnchor.constraint(greaterThanOrEqualTo: currentLocation.trailingAnchor, constant: indent),
             temperatureCity.bottomAnchor.constraint(equalTo: nameCity.bottomAnchor),
             temperatureCity.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -indent)
         ])

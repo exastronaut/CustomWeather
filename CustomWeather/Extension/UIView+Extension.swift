@@ -11,4 +11,11 @@ extension UIView {
     static var identifier: String {
         return String(describing: self)
     }
+
+    func makeLable(sizeFont: CGFloat) -> UILabel {
+        let lable = UILabel()
+        lable.font = UIFont.systemFont(ofSize: sizeFont)
+        lable.translatesAutoresizingMaskIntoConstraints = false
+        return lable
+    }
 }

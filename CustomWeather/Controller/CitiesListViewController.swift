@@ -12,7 +12,7 @@ class CitiesListViewController: UIViewController {
     // MARK: - Properties
     private let networkWeatherManager = NetworkWeatherManager()
     private let locationManager = CLLocationManager()
-    private var citiesWeather = [WeatherModel()]
+    private var citiesWeather = [WeatherData()]
 
     private lazy var citiesTableView: UITableView = {
         let table = UITableView()
@@ -43,6 +43,7 @@ class CitiesListViewController: UIViewController {
     // MARK: - Methods
     private func customizeView() {
         view.backgroundColor = .systemBackground
+        title = "CustomWeather"
     }
 
     @objc private func addCity() {
@@ -51,9 +52,9 @@ class CitiesListViewController: UIViewController {
         present(navigationController, animated: true) {
             searchViewController.completion = {  [weak self] lat, lon in
                 guard let self = self else { return }
-                self.networkWeatherManager.fetchWeather(lat: lat, lon: lon) { [weak self] weatherModel in
+                self.networkWeatherManager.fetchWeather(lat: lat, lon: lon) { [weak self] weatherData in
                     guard let self = self else { return }
-                    self.citiesWeather += weatherModel
+                    self.citiesWeather.append(weatherData)
                     DispatchQueue.main.async {
                         self.citiesTableView.reloadData()
                     }
@@ -84,6 +85,12 @@ extension CitiesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cityWeatherViewController = CityWeatherViewController()
+        cityWeatherViewController.model = citiesWeather[indexPath.row]
+        navigationController?.pushViewController(cityWeatherViewController, animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -96,7 +103,7 @@ extension CitiesListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CityViewCell.identifier, for: indexPath) as? CityViewCell else {
             return UITableViewCell()
         }
-        cell.setupCell(model: citiesWeather[indexPath.row])
+        cell.setupCell(citiesWeather[indexPath.row], indexPath.row)
         return cell
     }
 }
@@ -118,9 +125,9 @@ extension CitiesListViewController: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
-            networkWeatherManager.fetchWeather(lat: lastLocation.coordinate.latitude, lon: lastLocation.coordinate.longitude) { [weak self] weatherModel in
+            networkWeatherManager.fetchWeather(lat: lastLocation.coordinate.latitude, lon: lastLocation.coordinate.longitude) { [weak self] weatherData in
                 guard let self = self else { return }
-                self.citiesWeather[0] = weatherModel.first ?? WeatherModel()
+                self.citiesWeather[0] = weatherData
                 DispatchQueue.main.async {
                     self.citiesTableView.reloadData()
                 }
