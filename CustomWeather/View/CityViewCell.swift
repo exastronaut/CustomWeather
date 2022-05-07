@@ -9,9 +9,9 @@ import UIKit
 
 class CityViewCell: UITableViewCell {
     // MARK: - Properties
-    private lazy var nameCity = makeLable(sizeFont: 24)
-    private lazy var temperatureCity = makeLable(sizeFont: 24)
-    private lazy var currentLocation = makeLable(sizeFont: 14)
+    private lazy var nameCity = makeLable(sizeFont: 18)
+    private lazy var temperatureCity = makeLable(sizeFont: 18)
+    private lazy var currentLocation = makeLable(sizeFont: 12)
 
     // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -37,6 +37,7 @@ class CityViewCell: UITableViewCell {
         [nameCity, temperatureCity, currentLocation].forEach { contentView.addSubview($0) }
 
         let indent: CGFloat = 8
+        let width: CGFloat = (bounds.width - 4 * indent) / 3
 
         NSLayoutConstraint.activate([
             nameCity.topAnchor.constraint(equalTo: contentView.topAnchor, constant: indent),
@@ -45,6 +46,7 @@ class CityViewCell: UITableViewCell {
 
             currentLocation.topAnchor.constraint(equalTo: nameCity.topAnchor),
             currentLocation.leadingAnchor.constraint(equalTo: nameCity.trailingAnchor, constant: indent),
+            currentLocation.widthAnchor.constraint(equalToConstant: width),
             currentLocation.bottomAnchor.constraint(equalTo: nameCity.bottomAnchor),
 
             temperatureCity.topAnchor.constraint(equalTo: nameCity.topAnchor),

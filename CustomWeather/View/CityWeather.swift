@@ -38,7 +38,7 @@ class CityWeather: UIView {
 
         NSLayoutConstraint.activate([
             nameCity.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nameCity.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
+            nameCity.topAnchor.constraint(greaterThanOrEqualTo: safeAreaLayoutGuide.topAnchor, constant: 16),
 
             weatherDescription.centerXAnchor.constraint(equalTo: nameCity.centerXAnchor),
             weatherDescription.topAnchor.constraint(equalTo: nameCity.bottomAnchor, constant: 8),
@@ -47,7 +47,8 @@ class CityWeather: UIView {
             temperature.topAnchor.constraint(equalTo: weatherDescription.bottomAnchor, constant: 8),
 
             maxMinTemperature.centerXAnchor.constraint(equalTo: temperature.centerXAnchor),
-            maxMinTemperature.topAnchor.constraint(equalTo: temperature.bottomAnchor, constant: 8)
+            maxMinTemperature.topAnchor.constraint(equalTo: temperature.bottomAnchor, constant: 8),
+            maxMinTemperature.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor, constant: -16)
         ])
     }
 }

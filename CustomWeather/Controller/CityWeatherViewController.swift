@@ -101,7 +101,7 @@ extension CityWeatherViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == horizontalCollection {
-            let width = (horizontalCollection.bounds.width - sideInset * 9) / 8
+            let width = (horizontalCollection.bounds.width - sideInset * 6) / 5
             let height = horizontalCollection.bounds.height - 2 * sideInset
             return CGSize(width: width, height: height)
         } else {

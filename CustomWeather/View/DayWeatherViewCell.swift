@@ -43,7 +43,7 @@ class DayWeatherViewCell: UICollectionViewCell {
     private func layout() {
         [day, icon, temp].forEach { contentView.addSubview($0) }
 
-        let size: CGFloat = contentView.bounds.height - 24
+        let size: CGFloat = contentView.bounds.height - 4
 
         NSLayoutConstraint.activate([
             day.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor),

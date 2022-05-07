@@ -10,7 +10,7 @@ import UIKit
 class HourlyWeatherViewCell: UICollectionViewCell {
     //MARK: - Properties
 
-    private lazy var day = makeLable(sizeFont: 18)
+    private lazy var day = makeLable(sizeFont: 16)
     private lazy var temp = makeLable(sizeFont: 14)
 
     private let icon: UIImageView = {
