@@ -9,7 +9,9 @@ import UIKit
 import CoreLocation
 
 class CitiesListViewController: UIViewController {
+
     // MARK: - Properties
+
     private let networkWeatherManager = NetworkWeatherManager()
     private let locationManager = CLLocationManager()
     private var citiesWeather = [WeatherData()]
@@ -32,6 +34,7 @@ class CitiesListViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeView()
@@ -41,6 +44,7 @@ class CitiesListViewController: UIViewController {
 
 
     // MARK: - Methods
+
     private func customizeView() {
         view.backgroundColor = .systemBackground
         title = "CustomWeather"
@@ -78,10 +82,12 @@ class CitiesListViewController: UIViewController {
             addCityButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+
 }
 
 // MARK: - UITableViewDelegate
 extension CitiesListViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
@@ -91,10 +97,13 @@ extension CitiesListViewController: UITableViewDelegate {
         cityWeatherViewController.model = citiesWeather[indexPath.row]
         navigationController?.pushViewController(cityWeatherViewController, animated: true)
     }
+
 }
 
 // MARK: - UITableViewDataSource
+
 extension CitiesListViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         citiesWeather.count
     }
@@ -106,6 +115,7 @@ extension CitiesListViewController: UITableViewDataSource {
         cell.setupCell(citiesWeather[indexPath.row], indexPath.row)
         return cell
     }
+
 }
 
 // MARK: - CLLocationManagerDelegate

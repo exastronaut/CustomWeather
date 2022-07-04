@@ -46,18 +46,16 @@ class DayWeatherViewCell: UICollectionViewCell {
         let size: CGFloat = contentView.bounds.height - 4
 
         NSLayoutConstraint.activate([
-            day.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor),
+            day.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             day.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            day.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor),
 
             icon.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             icon.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             icon.heightAnchor.constraint(equalToConstant: size),
             icon.widthAnchor.constraint(equalToConstant: size),
 
-            temp.topAnchor.constraint(equalTo: day.topAnchor),
+            temp.centerYAnchor.constraint(equalTo: day.centerYAnchor),
             temp.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            temp.bottomAnchor.constraint(equalTo: day.bottomAnchor)
         ])
     }
 }

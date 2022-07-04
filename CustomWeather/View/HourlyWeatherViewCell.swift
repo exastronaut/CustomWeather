@@ -47,17 +47,14 @@ class HourlyWeatherViewCell: UICollectionViewCell {
 
         NSLayoutConstraint.activate([
             day.topAnchor.constraint(equalTo: contentView.topAnchor),
-            day.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor),
-            day.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor),
+            day.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
             icon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            icon.leadingAnchor.constraint(equalTo: day.leadingAnchor),
-            icon.trailingAnchor.constraint(equalTo: day.trailingAnchor),
+            icon.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             icon.heightAnchor.constraint(equalToConstant: size),
             icon.widthAnchor.constraint(equalToConstant: size),
 
-            temp.leadingAnchor.constraint(equalTo: icon.leadingAnchor),
-            temp.trailingAnchor.constraint(equalTo: icon.trailingAnchor),
+            temp.centerXAnchor.constraint(equalTo: day.centerXAnchor),
             temp.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }

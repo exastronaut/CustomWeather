@@ -13,7 +13,7 @@ struct NetworkWeatherManager {
         lon: Double,
         completionHandler: @escaping (WeatherData) -> Void
     ) {
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat.description)&lon=\(lon.description)&appid=\(appID)&units=metric&lang=ru") else {
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat.description)&lon=\(lon.description)&appid=3f4e1c9b529746dbac353c242caf387a&units=metric&lang=ru") else {
             print("invalid login URL")
             return
         }
@@ -30,3 +30,5 @@ struct NetworkWeatherManager {
         }.resume()
     }
 }
+
+

@@ -39,6 +39,8 @@ class CityWeatherViewController: UIViewController {
     private func setupCollections() {
         horizontalCollection.delegate = self
         horizontalCollection.dataSource = self
+//        horizontalCollection.layer.borderColor = UIColor.gray.cgColor
+//        horizontalCollection.layer.borderWidth = CGFloat(1)
         horizontalCollection.register(HourlyWeatherViewCell.self, forCellWithReuseIdentifier: HourlyWeatherViewCell.identifier)
 
         verticalCollection.dataSource = self

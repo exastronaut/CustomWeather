@@ -8,12 +8,15 @@
 import UIKit
 
 class CityViewCell: UITableViewCell {
+
     // MARK: - Properties
+
     private lazy var nameCity = makeLable(sizeFont: 18)
     private lazy var temperatureCity = makeLable(sizeFont: 18)
     private lazy var currentLocation = makeLable(sizeFont: 12)
 
     // MARK: - Lifecycle
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layout()
@@ -24,6 +27,7 @@ class CityViewCell: UITableViewCell {
     }
 
     // MARK: - Methods
+
     func setupCell(_ model: WeatherData, _ index: Int) {
         if index == 0 {
             currentLocation.text = "Текущее местоположение"
@@ -37,7 +41,6 @@ class CityViewCell: UITableViewCell {
         [nameCity, temperatureCity, currentLocation].forEach { contentView.addSubview($0) }
 
         let indent: CGFloat = 8
-        let width: CGFloat = (bounds.width - 4 * indent) / 3
 
         NSLayoutConstraint.activate([
             nameCity.topAnchor.constraint(equalTo: contentView.topAnchor, constant: indent),
@@ -45,14 +48,13 @@ class CityViewCell: UITableViewCell {
             nameCity.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -indent),
 
             currentLocation.topAnchor.constraint(equalTo: nameCity.topAnchor),
-            currentLocation.leadingAnchor.constraint(equalTo: nameCity.trailingAnchor, constant: indent),
-            currentLocation.widthAnchor.constraint(equalToConstant: width),
+            currentLocation.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             currentLocation.bottomAnchor.constraint(equalTo: nameCity.bottomAnchor),
 
             temperatureCity.topAnchor.constraint(equalTo: nameCity.topAnchor),
-            temperatureCity.leadingAnchor.constraint(greaterThanOrEqualTo: currentLocation.trailingAnchor, constant: indent),
             temperatureCity.bottomAnchor.constraint(equalTo: nameCity.bottomAnchor),
             temperatureCity.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -indent)
         ])
     }
+
 }

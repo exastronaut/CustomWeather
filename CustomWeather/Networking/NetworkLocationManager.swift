@@ -8,8 +8,9 @@
 import Foundation
 
 struct NetworkLocationManager {
+
     func fetchLocation(text: String, completionHandler: @escaping ([LocationData]) -> Void) {
-        guard let url = URL(string: "https://api.openweathermap.org/geo/1.0/direct?q=\(text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)&limit=5&appid=\(appID)") else {
+        guard let url = URL(string: "https://api.openweathermap.org/geo/1.0/direct?q=\(text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)&limit=5&appid=3f4e1c9b529746dbac353c242caf387a") else {
             print("invalid login URL")
             return
         }
@@ -25,4 +26,5 @@ struct NetworkLocationManager {
             }
         }.resume()
     }
+    
 }

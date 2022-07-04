@@ -17,7 +17,6 @@
 		C759189327FCCB58004DB176 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C759189227FCCB58004DB176 /* UIView+Extension.swift */; };
 		C759189727FDD6C9004DB176 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C759189627FDD6C9004DB176 /* WeatherModel.swift */; };
 		C7FA333E2822E38B00F708C2 /* NetworkWeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA333D2822E38B00F708C2 /* NetworkWeatherManager.swift */; };
-		C7FA334428241DF900F708C2 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA334328241DF900F708C2 /* Constant.swift */; };
 		C7FA33462824220400F708C2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA33452824220400F708C2 /* SearchViewController.swift */; };
 		C7FA3348282423EB00F708C2 /* NetworkLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA3347282423EB00F708C2 /* NetworkLocationManager.swift */; };
 		C7FA334A2825348A00F708C2 /* CityWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA33492825348A00F708C2 /* CityWeatherViewController.swift */; };
@@ -40,7 +39,6 @@
 		C759189227FCCB58004DB176 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C759189627FDD6C9004DB176 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		C7FA333D2822E38B00F708C2 /* NetworkWeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWeatherManager.swift; sourceTree = "<group>"; };
-		C7FA334328241DF900F708C2 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C7FA33452824220400F708C2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C7FA3347282423EB00F708C2 /* NetworkLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLocationManager.swift; sourceTree = "<group>"; };
 		C7FA33492825348A00F708C2 /* CityWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 		C759186127FAEA09004DB176 /* CustomWeather */ = {
 			isa = PBXGroup;
 			children = (
-				C7FA334228241DE000F708C2 /* Constant */,
 				C7FA333C2822D6EC00F708C2 /* Networking */,
 				C759188427FC9E52004DB176 /* Controller */,
 				C759188527FC9E6F004DB176 /* View */,
@@ -159,14 +156,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		C7FA334228241DE000F708C2 /* Constant */ = {
-			isa = PBXGroup;
-			children = (
-				C7FA334328241DF900F708C2 /* Constant.swift */,
-			);
-			path = Constant;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,7 +229,6 @@
 				C7FA33462824220400F708C2 /* SearchViewController.swift in Sources */,
 				C759188F27FCC667004DB176 /* LocationModel.swift in Sources */,
 				C759189327FCCB58004DB176 /* UIView+Extension.swift in Sources */,
-				C7FA334428241DF900F708C2 /* Constant.swift in Sources */,
 				C7FA334E28253CA700F708C2 /* UIViewController+Extension.swift in Sources */,
 				C7FA3350282542FF00F708C2 /* HourlyWeatherViewCell.swift in Sources */,
 				C759186327FAEA09004DB176 /* AppDelegate.swift in Sources */,
